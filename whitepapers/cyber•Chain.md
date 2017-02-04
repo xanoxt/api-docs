@@ -279,11 +279,11 @@ It is well known fact that every day Google receive up to 20% of new search quer
 - _Phrases_. E.g. `forest gump imdb`. These queries can be combination of well known terms and contribute another half to ever-growing unique query set. Even if we get relevant links from indexed `forest`, `gump` and `imdb` separately we would not able to combine answer to return meaningful movie rating to a user. But we can find _the most close documents_ between `imdb`, `forest` and `gump` and sort them by relevance. Those likely be the most relevant answers. This simple method can significantly increase efficiency for long tail queries without rocket science.
 - _Unique queries_. These is about 10% of never-seen-before queries. We expect that the market of linking will create a segment for on-demand answers. We remember that any query can be seen in memory pool by every network participant. Thus opportunity to earn can create healthy and competitive market for on-demand answer in environment without technical limitations.
 
-## Spam Protection - not ready yet
+## Spam Protection
 
-.. Voting power decay .. Vested Interest .. Broadband limiting
+In the center of spam protection system is an assumption that write operations can be executed only by those who have vested interest in success of the search engine. Every 1% of stake in search engine gives ability to use 1% of possible network broadband. As nobody use all possessed broadband we use fractional reserves while limiting broadband like ISPs do. Details of an approach can be found in a Steem whitepaper.
 
-Worth to note that Steem reward mechanism is sybil resistant as votes are quadratic based on principle 1 token in system = 1 vote. In order to get a vote one should vest in shares for at least for 1 year. That solve a problem entirely because those who have a right to vote are strongly incentivized in a growth of his wealth.
+Auditing and curation is based on Steem reward mechanism. It is sybil resistant approach as votes are quadratic based on principle 1 token in system = 1 vote. In order to vote one should vest in shares for at least for 20 weeks. That solve a problem entirely because those who have a right to vote are strongly incentivized in a growth of his wealth. In order to prevent abuse of auditing and curation voting power decay implemented exactly as in Steem.
 
 ## Possible Applications
 
