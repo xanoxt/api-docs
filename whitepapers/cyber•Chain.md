@@ -175,7 +175,8 @@ Proposed approach has very unexpected limitation. What if we want to index cyber
 
 It is our belief it is better stick to restrictive policy without further research.
 
-## Challenges and Advantages of Indexing Distributed Ledgers - not ready yet
+## Challenges and Advantages of Indexing Distributed Ledgers
+
 Conventional general purpose search engines was built on the _last mile assumption_ of stateless HTTP(S) protocol. Indeed the last mile approach worked well in the Internet where information emerge inside stateful private databases and only after become publicly available using HTTP. Emergence of content-addressable systems such as Git and Bittorent didn't change much as those can not be compared with stateful private databases in any sense even though this protocols are represent origin of a content. But with emergence of distributed ledger technology become possible to get know about public content in the moment than it actually has been born. In this sense blockchains and tangles can be viewed as a real alternative to conventional private databases. That breakthrough create enormous opportunity for better and faster indexing but at the same time has inherent problems solving of which create advantages:
 
 _Chain Validation_. Protocol diversity is the most hard part to solve an issue of chain validation using another chain, because solving this requires full implementation of one consensus computer inside another consensus computer. There are two efforts exist that try to solve issues of validating one chain using another. Among them are [Polkadot](https://github.com/polkadot-io/polkadotpaper/blob/master/PolkaDotPaper.pdf) and [Cosmos](https://cosmos.network/whitepaper). Both project aims to solve a problem of trestles interblockchain communications. Polkadot aims to design a system which don't require trust to parachains (or interconnected chains). Design of Polkadot is very complex and has inherent scalability limitation. Design of Cosmos is much more simple, but require trust to zones (interconnected chains). Our design doesn't try to solve a problem of interblockchain communications rather try to implement probabilistic search across blockchains. Thus it is significantly more simple. Instead of recording information that has been verified from point of view of exogenous protocol we let this information come to index letting market forces and relevance algorithm determine which chains are correct and which are not.
@@ -192,17 +193,17 @@ All this factors create a free market opportunity for emergence the diverse set 
 
 _Probabilistic Settlement_. Blockchain designs, especially Proof-of-Work based, implies that finality of transaction is probabilistic. A moment than a given fact can be considered as truth is blurred. [Previous researches](https://medium.com/@lopp/the-challenges-of-block-chain-indexing-30527cf4bfbd) show that it is expensive to achieve real-time blockchain indexing due to reorganization issues. Intention of discussed in the article design is to answer on the question deterministically. Our architecture based on principle that indexing a system with probabilistic settlement require probabilistic answering. Instead of deciding whether or not this particular block has been included in canonical chain we can index all of them calculating probability of finalization using cyber•rank.
 
-## Lazy Oracles - Not ready yet
+So solve of discussed issued of probabilistic indexing we propose a flexible approach we call lazy oracles.
 
-One specific ability is crucial for the next generation search engine. Application developers should have a motivation to provide structured arbitrary data feeds. Thus search engine can answer natural questions aggregating data from _highly structured and defined_ feeds. This make possible a user get high quality _calculated_ answers in realtime about state of reality expressed not only in links (which intelligent agent don't know how to parse) but in actionable numbers based on which its possible to make independent economic decisions.
+## Lazy Oracles
 
-But it is hard to find a tool to agree on publicly available and continuously evolving facts. We propose an approach to solve this.
+One specific ability is crucial for the next generation search engine. Application developers should have a motivation to provide structured arbitrary data feeds. Thus search engine can answer natural questions aggregating data from _highly structured and defined_ feeds. This make possible a user get high quality _calculated_ answers in realtime about state of reality expressed not only in links (which intelligent agent don't know how to parse) but in actionable numbers based on which its possible to make independent economic decisions. It is hard to find a tool to agree on publicly available and continuously evolving facts. We propose an approach to solve this.
 
-Today different blockchain have functionality necessary to implement this. For eg. Ethereum enable construction of smart contracts that can validate and incentivize data feeds. But Ethereum has strong limitation: a price. Due to a network design every operation should be validated across the network of 5k nodes. For every put operation developer of such contract should pay in hope that somebody in the future will use this feed in the future returning costs. Current cost of a permanent storage inside Ethereum contracts is around $200/megabyte. Worth to note that Ethereum has consensus variable gas limit. Currently a network load is around 10% of established limit. Once demand for computation reach a limit we will have a situation very similar for Bitcoin block size debate and price for storage can reach $2000k/megabyte easily without validation costs. Pretty expensive for unlimited possibilities. There is alternative - Factom [FACT]. Its consensus design rely on a small amount of payed servers. Thus the cost is around $1/megabyte. Such low price comes with high limitations. You can only put data to Factom and read it. There is no validation and incentivzation built-in. There are permissioned blockchain designs such as BigChainDB [BCDB] and Hyperledger [HYPL] which solves validation problem perfectly but require strong efforts for developers to program and establish a network and then somehow monetize it. Lazy Oracles are going to fill this gap providing robust, cheap and reliable way _for monetizing_ structured public data.
+Today different blockchain have functionality necessary to implement this. For eg. Ethereum enable construction of smart contracts that can validate and incentivize data feeds. But Ethereum has strong limitation: a price. Due to a network design every operation should be validated across the network of 5k nodes. For every put operation developer of such contract should pay in hope that somebody in the future will use this feed in the future returning costs. Current cost of a permanent storage inside Ethereum contracts is around $200/megabyte. Worth to note that Ethereum has consensus variable gas limit. Currently a network load is around 10% of established limit. Once demand for computation reach a limit we will have a situation very similar for Bitcoin block size debate and price for storage can reach $2000k/megabyte easily without validation costs. Pretty expensive for unlimited possibilities. There is alternative - Factom [FACT]. Its consensus design rely on a small amount of payed servers. Thus the cost is around $1/megabyte. Such low price comes with high limitations. You can only put data to Factom and read it. There is no validation and incentivzation built-in. There are permissioned blockchain designs such as BigChainDB [BCDB] and Hyperledger [HYPL] which solves validation problem perfectly but require strong efforts for developers to program and establish a network and then somehow monetize it. Lazy Oracles are going to fill this gap providing robust, cheap and reliable way _for monetizing_ structured public data. Any cyber•chain account have a share in a broadband depending on it's cyber•power thus granting lifetime assurance of network usage. A network programmed with decaying inflation a part of which goes to all who participate in indexing depending on valuation of subjective contributions.
 
 The process consist of 5 steps:
 
-Step 1: Everybody can declare a soft protocol for data feed by posting a CID with tag _oracle-defenition_ pointing to the following structure document:
+Step 1: Everybody can declare a soft protocol for data feed by posting a CID with inbound link to _oracle-defenition_ CID pointing to the document with the following structure:
 
 ```
 // Basic Validation
@@ -210,23 +211,23 @@ doc_type: market_update // should be fixed
   exchange: string // domain name of exchange
   base: string // link to a definition of a reference namespace e.g. ISO or chaingear
   quote: string // link to a definition of a reference namespace e.g. ISO or chaingear
-  price: uint16
-  volume: unit32
+  price: number
+  volume: number
 // Audit Rules
 Document format and data types should match a protocol
 For every unique exchange and pair `market_update` report can be submitted no more frequently than once per minute.
 If either a price or volume for unique exchange and pair has not been changed more than 0.1% a report should not be submitted.
-// Tags
-<CIDv1> <oracle> <market-update> <exchange> <base> <quote>
+// Inbound Links
+<oracle> <market-update> <exchange> <base> <quote>
+// Reference Crawler Implementation
+CID
+// Reference Auditing Implementation
+CID
 ```
 
-There are some soft rules for protocol declaration:
+Protocol declaration should be agnostic from language implementation and unambiguous.
 
-- Protocol declaration should be agnostic from language implementation and unambiguous
-- Protocol declaration should have a git link to open source implementation of data feed crawler
-- Protocol declaration should have a git link to open source implementation of plug-in that programmatically define strict audit rules.
-
-Step 2: Now every reporter can submit data according to a soft protocol. If data begin to be submitted without protocol definition a value of this data can be significantly lower. Thus auditors and encouraged to flag such documents. If false or malicious data come auditors have strong incentive to flag such data. All lazy oracles should be feed with self-descriptive tags so other participants will able to faster process auditing.
+Step 2: Now every reporter can submit data according to a soft protocol. If data begin to be submitted without protocol definition a value of this data can be significantly lower. Thus auditors are encouraged to flag such documents. If false or malicious data come auditors have strong incentive to flag such data. All lazy oracles should be feed with self-descriptive links so other participants will able to faster process auditing.
 
 Step 3: Auditors validate any given document by scripts.
 
@@ -236,7 +237,7 @@ Step 4: Payouts for auditors are made. Payouts information is input information 
 
 Step 5: High quality data feeds (or lazy oracles) are available for a consensus engine of search engine (thus cyber•rank can be continuously improved) and everybody on the planet.
 
-We call this type of oracles lazy because they don't require strict rules of validation by the expense of reducing the level of accuracy (but still enough to reason with high level of assurance). Also they are lazy because the don't require to think about monetization for participants rather consensus engine print rewards based on valuation of subjective contributions. This approach is superior to Ledgys [] than reporters should sell data pieces using costly Ethereum storage.
+We call this type of oracles lazy because they don't require strict rules of validation by the expense of reducing the level of accuracy (but still enough to reason with high level of assurance). Also they are lazy because the don't require to think about monetization for participants rather consensus engine print rewards based on valuation of subjective contributions. This approach is superior to Ledgys [] than reporters should sell encrypted data pieces using costly Ethereum storage.
 
 The most obvious use cases for Lazy Oracles
 
@@ -284,7 +285,7 @@ It is well known fact that every day Google receive up to 20% of new search quer
 
 Worth to note that Steem reward mechanism is sybil resistant as votes are quadratic based on principle 1 token in system = 1 vote. In order to get a vote one should vest in shares for at least for 1 year. That solve a problem entirely because those who have a right to vote are strongly incentivized in a growth of his wealth.
 
-## Possible Applications - not ready yet
+## Possible Applications
 
 Its hard to imagine what kind of applications can be built on top of proposed foundation. I'd like to mentions some outstanding opportunities which can be build using cyber•Chain and IPFS.
 
@@ -293,34 +294,33 @@ Its hard to imagine what kind of applications can be built on top of proposed fo
 - Offline search
 - Smart command tools
 - Self-aware robots
-- Open search API
 - Language convergence
 
-_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access. During search request global and local request can be done in parallel. This queries can be easily merged adjusted on user-defined importance of personalized search for her. The same approach is able to fix vocabulary mismatch problem.
+_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access. During search request global and local request can be done in parallel. This queries can be easily merged adjusted on user-defined importance of personalized search for her.
 
 _Blockchain Browser_.
 
 _Actions in search_.
 
 _Offline Search_.
+IPFS make possible
 
 _Smart Command Tools_.
 
 _Self-aware robots_.
 
-_Open search API_.
 
 _Language convergence_. Programmer should not care about what language do the user use. We don't need to have knowledge of what language user is searching in. Entire UTF-8 spectrum is at work. Semantic core is open so competition for answering can become distributed across different domain specific areas, including semantic cores of different languages. Unified approach creates opportunity for cyber•Bahasa. Since the Internet we observe a process of rapid language convergence. We use more truly global words across the entire planet independently of our nationality, language and race, Name the Internet. The dream of truly global language is hard to deploy because it is hard to agree on what mean what. But we have tools to make that dream come true. Its not hard to predict that the shorter a word the more it's cyber•rank will be. Global publicly available list of symbols, words and phrases sorted by cyber•rank with corresponding links provided by cyber•chain can be the foundation for emergence of truly global language everybody can accept. Recent scientific advances in machine translation [GNMT] are breathtaking but meaningless for those how wish to apply them without Google scale trained model. Proposed cyber•rank semantic core offer exactly this.
 
 This are sure not exhaustive list of possible applications but very exciting though.
 
-## Incentive Structure and Distribution Mechanism - not ready yet
+## Incentive Structure and Distribution Mechanism
 
 To make cyber•rank economically resistant to sybil attack and to incentivize all participant for rational behavior a system uses 3 types of tokens: CYBER (or cybers), CP (or cyber•power) and CD (cyber•dollar)
 
 CYBER is a transferable equity token which is analog of STEEM. Intrinsic value of CYBER came from ability to convert it to CP.
 
-CP is a non-transferrable equity token which is analog of SP in Steem. Intrinsic value of CP came from the right to (1) write to an index according to a bandwidth limit, (2) rank objects, (3) promote objects (4) make consensus decisions. CP can be converted to CYBER in one year.
+CP is a non-transferrable equity token which is analog of SP in Steem. CP can be converted to CYBER in 20 weeks using proportional weekly payments. Intrinsic value of CP came from the right to (1) write to an index according to a bandwidth limit, (2) rank objects, (3) promote objects (4) make consensus decisions. CP can be converted to CYBER in one year.
 
 CD is a debt token with relatively stable value which came from ability to convert it into CYBER within 3 days by the price submitted by witnesses and calculated according to cyber•rating methodology [] (don't confuse). 1 CD tracks 1/10^12 of _provable_ blockchain economy.
 
@@ -328,7 +328,7 @@ Reward Pool is defined as 100% of emission and split among the following groups:
 
 Infrastructure Reward Pool
 
-- Witnesses - 10%
+- Witnesses - 5%
 - Investors - 10%
 
 Indexing Reward Pool - 30%
@@ -336,7 +336,7 @@ Indexing Reward Pool - 30%
 - Reporters - 10%
 - Auditors - 20%
 
-Linking Reward Pool - 60%
+Linking Reward Pool - 65%
 
 - Responders ~ 20%
 - Trainers ~ 40%
@@ -351,17 +351,28 @@ Virtual loop of the business models for our decentralized autonomous organizatio
 
 A network starts from 100 000 000 tokens
 
-- Crowdsale - 80%
-- cyber•Fund reward - 5%
-- Founders reward - 5%
-- Sharedrop 5% -
-- Development Reserve - 5%
+- Crowdsale - 70%
+- cyber•Fund reward - 10%
+- Founders reward - 10%
+- Sharedrop & License - 5%
+- Development reserve - 5%
 
-Than a network prints every block xx tokens ....
+Since inception a network prints 3 CYBER every block. Every 1 million block it reduce print rate on 1%. Thus starting from ~35% print rate per year inflation begin to reduce gradually until it reach 1%.
 
-Ther is one problem with proposed incentive structure. We call it _language incentivization bias_. In the core of cyber•chain is quadratic voting. System needs it to effectively incentivize participants for quality ranking. But that natively leads to weak incentives across different language groups. E.g blockchain Golos was deployed as Russian alternative to Steem because Russian posts acquired only 0.2% of rewards though providing 10% of content. The idea of deploying cyber•Chain is great if it can be truly global from the start. We only way to overcome this bias is a global deployment from day 0, because otherwise we need significantly increase complexity of the reward system. We offer good incentives for translation of this white paper to 50 languages worldwide as well as call for action to all blockchain communities across the globe.
+There is one problem with proposed incentive structure. We call it _language incentivization bias_. In the core of cyber•chain is quadratic voting. System needs it to effectively incentivize participants for quality ranking. But that natively leads to weak incentives across different language groups. E.g blockchain Golos was deployed as Russian alternative to Steem because Russian posts acquired only 0.2% of rewards though providing 10% of content. The idea of deploying cyber•Chain is great if it can be truly global from the start. The only way to overcome this bias is a global deployment from day 0, because otherwise we need significantly increase complexity of the reward system. We offer good incentives for translation of this white paper to 50 languages worldwide as well as call for action to all blockchain communities across the globe.
 
-## Extensibility - not ready yet
+Crowdsale will start after 30 day of network launch and will goes 30 days. Crowdsale will be capped with 10000 bitcoins without limit in the first day - rush day. During crowdsale the following discounts will be applied.
+
+- 30% in the first rush day
+- 20% from 2 until 15 day
+- 15% from 16 until 18 day
+- 10% from 19 until 21 day
+- 5% from 22 until 24 day
+- 0% from 25 until the end
+
+All participant will receive CP proportionally to invested bitcoins after discounts.
+
+## Extensibility
 
 Currently our implementation has the following functionality available for application developers.
 
