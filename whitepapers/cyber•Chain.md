@@ -376,19 +376,19 @@ All participant will receive CP proportionally to invested bitcoins after discou
 
 Currently our implementation has the following functionality available for application developers.
 
-- Custom Operations ...
-- Plugins ...
-- Escrow ...
-- Private Messaging ...
-- Dynamic Account Permissions ...
+- Custom Operations. Better alternative for OP-RETURN
+- Plugins. Allow to implement API based on custom operations.
+- Escrow. The core smart-contract enables 3d party arbitrage for arbitrary transactions.
+- Private Messaging. Enable private communications between accounts.
+- Dynamic Account Permissions. You can think about it as better multisig.
 
-A system Our design allow to implement intensive on-chain calculations in case of 17 of 21 delegates accept a hardfork. This is for a purpose of keeping a protocol from bloating.
+Consensus can be changed in case of 17 of 21 delegates accept a hardfork.
 
-The following possibilities can be available in a future:
+The following possibilities can be available in a distant future:
 
-- Sidechains ...
-- State Channels ...
-- Smart Contracts ...
+- Sidechains
+- State channels
+- Permissionless smart contracts
 
 ## Performance and Scalability - not ready yet
 
