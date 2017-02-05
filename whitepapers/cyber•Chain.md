@@ -138,6 +138,13 @@ A document should be a valid CIDv1 and unique outbound link from answer. So for 
 
 > We follow blackbox rule. In order to answer a question right you don't need a full comprehension neither the question nor the answer. You just need to match query with the most relevant links.
 
+In order to increase the rank everybody can promote either link or query.
+
+> promote_search {CIDv1} hipster 20 true
+> promote_answer {search CIDv1} {answer CIDv1} hipster 20 true
+
+Every sent token for promote is destroyed thus creating value for every token holder.
+
 That is a core API for the entire blockchain. Other methods accomplish support role for the thing. Such compact design open huge opportunity for performance optimizations. Also clean and comprehendible experience is very important for those who want to be involved. That is. The entire graph of semantic core with weights are open for everybody and available for data mining or any kind of weird AI stuff. But to make it work we need to find a way to calculate relevance.
 
 We can represent our data structure as directed acyclic graph where vertices are indexed documents and edges are directed links between them.
@@ -420,22 +427,42 @@ Software is open source. Cybernode ![](https://habrastorage.org/files/31c/e9c/05
 
 ## Deployment
 
-1. white paper published
-2. CID verification on consensus level
-3. cyber•rank implementation
-4. cyber•node release
-5. blockchain launched
-6. cyber•Fund basic application release
-7. Training scripts for autocomplete
-8. Top 100000 search queries
-9. indexing 10 blockchains
-10. indexing 1000 market pairs
-11. indexing 10 package managers
-12. evaluating 1000 tokens
-13. evaluating 1000 accounts
-14. crowdsale starts
-15. crowdsale ends
-16. first payouts
+We split a process of network deployment to the following milestones which are not bounded to any timeframe at the moment:
+
+1. Exploration Phase
+- white paper published
+- CID verification on consensus level
+- cyber•rank implementation
+- cyber•node release
+
+Purpose of seed stage is to implement the blockchain and prepare it for technical launch.
+
+2. Validation Phase
+- Blockchain launched
+- cyber•Fund basic application release
+- Crowdsale starts.
+- Crowdsale ends. Token distribution
+
+Purpose of validation phase is to verify feasibility of an idea and prospects of technological design across blockchain community. Successful deployment of MVP in the form of basic technical infrastructure in a decentralized fashion and quality of support form the blockchain community and investors around idea will be enough to understand what kind of future the blockchain has. Objective metric is amount of bitcoins raised during crowdsale for already working blockchain design.
+
+3. Build Phase
+- Indexing 10 blockchains
+- Indexing 1000 market pairs
+- Evaluating 1000 tokens
+- Historical records of balance valuation is available for indexed blockchain
+- Developers run 10 experiments
+- First payouts to indexers and auditors
+
+Purpose of build phase is to reach a very *basic* product/market fit around *one specific use case* or this use case will emerge from experiments. Amount of payouts which will be calculated based on current capitalization is objective metric. 6 month is expected duration of phase. If build phase will be successful there are infinite opportunities ahead.
+
+4. Scaling Phase
+- Indexing all blockchains
+- Indexing Git, BitTorent, IPFS and DAT
+- Indexing 10 blockchains
+- Autocomplete is fully functional
+- Top 1 mln. search queries return useful answers
+
+This is infinite phase in which the network start continuously grow indexing more and more relevant and meaningful data and the most important answering questions better and for the better.
 
 ## The power of cyber•Chain - not ready yet
 
@@ -451,15 +478,15 @@ Proposed economics model disintermediate conventional ad model there users are s
 
 Worth to note that minimalistic but continuously self improving approach provides necessary tools for emergence of economically rational robots. Blockchain technology enable creation of devices which are able to earn, store, spend and invest digital assets by themselves. What is needed is verified information about state of reality evaluated in transact-able assets. ...
 
-
-
-_Free Market of Indexing.
+_Free Market of Indexing_
 
 _Free Market of Linking_. After all we have recent advances in machine learning enable to reason about a piece of data quite well. All this algorithms require enormous highly distributed computation which as nearly impossible to achieve in a trestles consensus computer. With current state of blockchain technology implementing this algorithms inside decentralized computational network seems unfeasible. What we need is to find a way to _outsource_ this computation for the entire community.
 
 _Free Market of Curation and Auditing
 
 _Open Semantic Core_. Click-through information is stored on chain. Every time a user follow a link positive voting transaction is broadcasted e.g. with grade 1\. Voting on a protocol level is a number in a range from -100 to 100\. Thus application developers has a tool to implement different grades for different kind of interactions. Such design is crucial to train the model and acquire a data about search popularity of semantic core and its volume. Currently search engines are very careful in revealing this information because this information is the most important part of ranking. We want to change that. Every time a user click on a snippet developer earn fair portion of emission and on chain model is trained. Application acquire the more rank the more rank acquired by its links. The more cyber•rank acquired - the more revenue streams for application developer.
+
+_Free Market of Answering
 
 _Self Hosted Search API_. Available for everybody $5 - 1000 запросов у Гугл. 30 requests a month for avarage users. The on should not store we entire index. It is possible to process (let us say without) some chain starting from a trusted part and cache only the most relevant and new documents thus limiting volume of stored information. This approach enable effective using of offline search
 
