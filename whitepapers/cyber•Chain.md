@@ -1,8 +1,6 @@
-# cyber•Chain: Motivated Search and Evaluation Engine for Permanent Web
+# Motivated Search and Evaluation Engine for Permanent Web
 
 [Dima Starodubcev](https://steemit.com/@hipster)
-
-[cyber•Fund](https://cyber.fund)
 
 Draft v 0.1
 
