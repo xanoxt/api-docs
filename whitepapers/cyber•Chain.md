@@ -288,11 +288,11 @@ It is well known fact that every day Google receive up to 20% of new search quer
 
 ## Spam Protection
 
-In the center of spam protection system is an assumption that write operations can be executed only by those who have vested interest in success of the search engine. Every 1% of stake in search engine gives ability to use 1% of possible network broadband. As nobody use all possessed broadband we use fractional reserves while limiting broadband like ISPs do. Details of an approach can be found in a Steem whitepaper.
+In the center of spam protection system is an assumption that write operations can be executed only by those who have vested interest in success of the search engine. Every 1% of stake in search engine gives ability to use 1% of possible network broadband. As nobody use all possessed broadband we use fractional reserves while limiting broadband like ISPs do. Details of an approach can be found in a Steem white paper.
 
 Auditing and curation is based on Steem reward mechanism. It is sybil resistant approach as votes are quadratic based on principle 1 token in system = 1 vote. In order to vote one should vest in shares for at least for 20 weeks. That solve a problem entirely because those who have a right to vote are strongly incentivized in a growth of his wealth. In order to prevent abuse of auditing and curation voting power decay implemented exactly as in Steem.
 
-## Possible Applications
+## Possible Applications - not ready yet
 
 Its hard to imagine what kind of applications can be built on top of proposed foundation. I'd like to mentions some outstanding opportunities which can be build using cyber•Chain and IPFS.
 
@@ -303,7 +303,7 @@ Its hard to imagine what kind of applications can be built on top of proposed fo
 - Self-aware robots
 - Language convergence
 
-_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access. During search request global and local request can be done in parallel. This queries can be easily merged adjusted on user-defined importance of personalized search for her.
+_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search inside any application. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access. During search request global and local request can be done in parallel. This queries can be easily merged adjusted on user-defined importance of personalized search for her.
 
 _Blockchain Browser_.
 
@@ -397,19 +397,9 @@ The following possibilities can be available in a distant future:
 - State channels
 - Permissionless smart contracts
 
-## Performance and Scalability - not ready yet
+## Anonymity
 
-3 seconds block ...
 
-Our current node implementation use memory for faster performance. As of now all blockchains are about 1 bln immutable documents which size is about 200 GB with avarage tx 200 kb. We need to store all hashes which are on average 64 bytes long. We estimated that storing in the index all interlinked CIDs and votes is roughly the same as storing all raw blockchain data.
-
-Currently it is not hard to assemble a hardware with 2 TB of memory which enable to put into blockchain index all blockchains tenfold. Such appliance can cost about $25k so we can think of it as affordable for those who are seriously wnat to be involved in a project. Thus overall costs of basic network infrastructure can be about $500k.
-
-Scalability improvements include:
-
-- Hardware part. This year Intel 3dx Memory arrive so it
-- Implementation optimizations. It is not so hard little harm to performance to use fast M.2 PCI-E X4 slots for SSD storage which are fast. This enable to scale a node for as much as 100 TB that is enough for years of developments given as input current blockchain size growth.
-- Consensus optimisations. The future is parallel ...
 
 ...
 
@@ -417,17 +407,35 @@ Scalability improvements include:
 
 ...
 
-## Search Appliance - not ready yet
+## Search Appliance
 
 Fo bootsraping we are going to offer well tested open source specs for hardware configuration of commodity computer which cost around $10k and is able to participate and earn by itself.
+
+Currently it is not hard to assemble a 2 CPU computer with 1 TB of RAM and 40 TB of SSD using commodity hardware. Such appliance can cost about $30k so we can think of it as affordable for those who are seriously want to be involved in a project. Also we have an option to extend capability of proposed search appliance based on 2 CPU motherboards built on Intel C612 chipset. Usually it has 7 PCI-E slots for GPU which can be dedicated for cyber•rank calculation [http://www.hipc.org/hipc2011/studsym-papers/1569513051.pdf]. Thus a price for an ultimate (2 CPU * Xeon E5 * 22 cores + 7 GPU * GTX 1080 * 2560 Cuda cores) search appliance can be around $50k.    
 
 Software is open source. Cybernode ![](https://habrastorage.org/files/31c/e9c/05c/31ce9c05c71d44ddbda2e7abc3ac10d7.png) Hardware is open source. Enterprise.
 
 ...
 
+## Performance and Scalability
+
+Proposed blockchain design is based on DPOS consensus algorithm and has fast and predictable 3 seconds block conformation time and 1 minute finality time. Average conformation timeframe is 1,5 seconds thus conformations can be asynchronous and nearly invisible for users. A good thing is that users don't need conformations at all before getting search response as there is no risk associated with that.
+
+Current node implementation theoretically [https://bitshares.org/blog/2015/06/08/measuring-performance/] can process about 100k transactions per second. This theoretical bound is primary limited with possibility to replay a blockchain [https://steemit.com/blockchain/@dantheman/how-to-process-100m-transfers-second-on-a-single-blockchain]. As of now all blockchains are about 1B immutable documents which size is about 200 GB with avarage tx 200 kb. We need to store all hashes which are on average 64 bytes long. We estimated that storing in the index all blockchain documents as CIDs and votes is roughly the same as storing all raw blockchain data. Linking 1B documents create significant overhead as blockchain index size can be up to 100 times more. Given this we can assume that indexing all existing blockchains require about 4TB of SSD space. This is affordable for commodity hardware with 10x scaling capability without necessity for sharding across several machines. We assume this is enough scalability margin for proof-of-concept.
+
+Initial indexing of 1B documents and 100B links will require continuous load of the network at the upper bound of its capacity in the first year of its existence. If we assume that network will be able to process 10k transactions per second with 2MB blocksize we will be able to index all blockchains in 4 months. Further operations will require significantly less capacity as currently not more than 1000 transactions per second happens among all blockchains.
+
+Based on the proposed search appliance we estimate that participants will require to invest around $1 mln. for dedicated hardware (21 witnesses) and the same amount for backup nodes. Thus overall costs of hardware network infrastructure can be around $2 mln. after full deployment.
+
+Worth to note that the network don't require ultimate configuration at the start and is able to optimize initial investments by the costs of time to index all blockchains. Thus costs at launch can be around $200k. Given that mining industry has been rapidly developed last years this can not be a showstopper for a project. We expect huge interest from miners as slots are limited with 21 fully paid nodes and ~20 of partially paid nodes (depend on the market).
+
+Possible scalability improvements include:
+- Hardware. This year Intel Optane [http://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html] That creates opportunity to converge RAM and SSD. Our design has 3 year hardware margin for moving to cheaper and more dense next generation memory.
+- Software. The future of consensus computer optimisations is in parallel processing. We are going to seriously invest in research of this field.
+
 ## Deployment
 
-We split a process of network deployment to the following milestones which are not bounded to any timeframe at the moment:
+We split a process of network deployment into the following milestones which are not bounded to any timeframe at the moment:
 
 1. Exploration Phase
 - white paper published
@@ -449,7 +457,8 @@ Purpose of validation phase is to verify feasibility of an idea and prospects of
 - Indexing 10 blockchains
 - Indexing 1000 market pairs
 - Evaluating 1000 tokens
-- Historical records of balance valuation is available for indexed blockchain
+- GPU cyber•rank calculation implemented
+- Historical records of balance valuations is available for indexed blockchain
 - Developers run 10 experiments
 - First payouts to indexers and auditors
 
@@ -462,7 +471,9 @@ Purpose of build phase is to reach a very *basic* product/market fit around *one
 - Autocomplete is fully functional
 - Top 1 mln. search queries return useful answers
 
-This is infinite phase in which the network start continuously grow indexing more and more relevant and meaningful data and the most important answering questions better and for the better.
+This is infinite phase in which the network start continuously grow indexing more and more relevant and meaningful data and the most important answering questions better and for the better. Key scope of work during this stage is to continuously improve developers experience:
+
+> `More indexing => More people search => *More developers build* => More people earn, rank and promote => Better infrastructure => More indexing`.
 
 ## The power of cyber•Chain - not ready yet
 
