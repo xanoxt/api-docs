@@ -4,7 +4,7 @@
 
 [cyber•Fund](https://cyber.fund)
 
-Working Draft
+Draft v 0.1
 
 ## Abstract
 
@@ -171,6 +171,8 @@ Recent study [http://www.vldb.org/pvldb/vol8/p1804-ching.pdf] shows that Faceboo
 
 Our model is recursive and require enormous amount of calculations which are limited within blockchain design. Model recalculation does not happens on a periodic basis rather it continuous. We consider to introduce consensus variable in addition to blocksize in order to target processing capacity of the network. Lets call it _computing target of documents per block_ or CTD. Any witness will be able to set a number of documents the network should recompute every block. The blockchain take as input computing target of legitimate witnesses and compute CTD as daily moving average. Based on CTD blockchain can schedule range of CIDs that should be recomputed by every witness per round.
 
+Semantic core is open. Click-through information is stored on chain. Every time a user follow a link positive voting transaction is broadcasted e.g. with grade 1\. Voting on a protocol level is a number in a range from -100 to 100\. Thus application developers has a tool to implement different grades for different kind of interactions. Such design is crucial to train the model and acquire a data about search popularity of semantic core and its volume. Currently search engines are very careful in revealing this information because this information is the most important part of ranking. We want to change that. Every time a user click on a snippet developer earn fair portion of emission and on chain model is trained. Application acquire the more rank the more rank acquired by its links. The more cyber•rank acquired - the more revenue streams for application developer.
+
 Both algorithms have strong proof in form of Google's $550 B capitalization in 18 years and Steem $40 M capitalization in 9 months. Combining both it is possible to empower the world with a new kind of search quality that has been (1) designed to index relevant document fast and (2) has inherent sybil protection.
 
 ## Self Indexing Dilemma
@@ -285,10 +287,6 @@ It is well known fact that every day Google receive up to 20% of new search quer
 - _Misspellings_. These queries contribute fair half to ever-growing unique query set. But it is not a rocket science to stem such queries client side without any indexed knowledge. After a user click on client side suggestion correct link can be submitted to cyber•chain thus improving global model.
 - _Phrases_. E.g. `forest gump imdb`. These queries can be combination of well known terms and contribute another half to ever-growing unique query set. Even if we get relevant links from indexed `forest`, `gump` and `imdb` separately we would not able to combine answer to return meaningful movie rating to a user. But we can find _the most close documents_ between `imdb`, `forest` and `gump` and sort them by relevance. Those likely be the most relevant answers. This simple method can significantly increase efficiency for long tail queries without rocket science. As API is open for everybody there is no limits on using advanced technics.
 - _Unique queries_. These is about 10% of never-seen-before queries. We expect that the market of linking will create a segment for on-demand answers. We remember that any query can be seen in memory pool by every network participant. Thus opportunity to earn can create healthy and competitive market for on-demand answer in environment without technical limitations.
-
-## Auditing and Curation - not ready yet
-
-_Open Semantic Core_. Click-through information is stored on chain. Every time a user follow a link positive voting transaction is broadcasted e.g. with grade 1\. Voting on a protocol level is a number in a range from -100 to 100\. Thus application developers has a tool to implement different grades for different kind of interactions. Such design is crucial to train the model and acquire a data about search popularity of semantic core and its volume. Currently search engines are very careful in revealing this information because this information is the most important part of ranking. We want to change that. Every time a user click on a snippet developer earn fair portion of emission and on chain model is trained. Application acquire the more rank the more rank acquired by its links. The more cyber•rank acquired - the more revenue streams for application developer.
 
 ## Spam Protection
 
@@ -431,10 +429,6 @@ The following possibilities can be available in a distant future:
 
 Consensus can be changed in case of 17 of 21 elected delegates accept a hardfork.
 
-## Anonymity - not ready yet
-
-...
-
 ## Search and Evaluation Appliance
 
 For bootstrapping a network we are going to offer software configuration (Cybernode - Github) on top of well tested open source specs for hardware configuration of commodity computer (Enterprise - Github) which cost around $10k-$30k depending on RAM and SSD capacity and is able to participate and earn by itself executing different network tasks:
@@ -544,4 +538,8 @@ ENIGMA <https://www2.deloitte.com/content/dam/Deloitte/uk/Documents/Innovation/d
 
 RTB <https://en.wikipedia.org/wiki/Real-time_bidding>
 
-We call this approach _setup once index forever_.
+## TODO
+
+_Auditing and Curation_. Probably need more details
+
+_Anonymity_. Explain an economic difference between read search queries and write search queries.
