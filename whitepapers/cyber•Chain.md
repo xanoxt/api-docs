@@ -286,6 +286,10 @@ It is well known fact that every day Google receive up to 20% of new search quer
 - _Phrases_. E.g. `forest gump imdb`. These queries can be combination of well known terms and contribute another half to ever-growing unique query set. Even if we get relevant links from indexed `forest`, `gump` and `imdb` separately we would not able to combine answer to return meaningful movie rating to a user. But we can find _the most close documents_ between `imdb`, `forest` and `gump` and sort them by relevance. Those likely be the most relevant answers. This simple method can significantly increase efficiency for long tail queries without rocket science. As API is open for everybody there is no limits on using advanced technics.
 - _Unique queries_. These is about 10% of never-seen-before queries. We expect that the market of linking will create a segment for on-demand answers. We remember that any query can be seen in memory pool by every network participant. Thus opportunity to earn can create healthy and competitive market for on-demand answer in environment without technical limitations.
 
+## Auditing and Curation - not ready yet
+
+_Open Semantic Core_. Click-through information is stored on chain. Every time a user follow a link positive voting transaction is broadcasted e.g. with grade 1\. Voting on a protocol level is a number in a range from -100 to 100\. Thus application developers has a tool to implement different grades for different kind of interactions. Such design is crucial to train the model and acquire a data about search popularity of semantic core and its volume. Currently search engines are very careful in revealing this information because this information is the most important part of ranking. We want to change that. Every time a user click on a snippet developer earn fair portion of emission and on chain model is trained. Application acquire the more rank the more rank acquired by its links. The more cyber•rank acquired - the more revenue streams for application developer.
+
 ## Spam Protection
 
 In the center of spam protection system is an assumption that write operations can be executed only by those who have vested interest in success of the search engine. Every 1% of stake in search engine gives ability to use 1% of possible network broadband. As nobody use all possessed broadband we use fractional reserves while limiting broadband like ISPs do. Details of an approach can be found in a Steem white paper.
@@ -294,7 +298,7 @@ Auditing and curation is based on Steem reward mechanism. It is sybil resistant 
 
 ## Applications
 
-Its hard to imagine what kind of applications can be built on top of proposed foundation. I'd like to mentions some outstanding opportunities which can be build using cyber•Chain and IPFS.
+Its hard to imagine what kind of applications can be built on top of proposed foundation. I'd like to mentions some outstanding opportunities which can be build using cyber•Chain and IPFS:
 
 - Relevance everywhere
 - Blockchain browser
@@ -510,7 +514,7 @@ This is infinite phase in which the network start continuously grow indexing mor
 
 > `More indexing => More people search => *More developers build* => More people earn, rank and promote => Better infrastructure => More indexing`.
 
-## The power of cyber•Chain - not ready yet
+## The power of cyber•Chain
 
 Key purpose of our proposed design is not just replicate abilities of existing search engines which return only links but enable answering new class of question:
 
@@ -522,17 +526,11 @@ Our proposed design has all necessary components to bootstrap a markets for a ne
 
 Proposed economics model disintermediate conventional ad model there users are sold to advertiser and enable any business or people or robot benefit from pure peer-to-peer interactions which bring value for every involved participant.
 
-_Free Market of Indexing_
+_Free Market of Indexing and Auditing_. Everybody can connect any blockchain or content-addressable protocol. Decentralized approach to indexing and auditing create opportunity for those who want to earn on the contributions to cyber•chain. Proposed solution is not more than a way to _outsource_ this complicated and unstructured efforts for the entire community.
 
-_Free Market of Linking_. After all we have recent advances in machine learning enable to reason about a piece of data quite well. All this algorithms require enormous highly distributed computation which as nearly impossible to achieve in a trestles consensus computer. With current state of blockchain technology implementing this algorithms inside decentralized computational network seems unfeasible. What we need is to find a way to _outsource_ this computation for the entire community.
+_Free Market of Answering. After all we have recent advances in machine learning enable to reason about a piece of data quite well. All this algorithms require enormous highly distributed computation which as nearly impossible to achieve in a trestles consensus computer. With current state of blockchain technology implementing this algorithms inside decentralized computational network seems unfeasible. We find a way to _outsource_ this computation for the entire community.
 
-_Free Market of Curation and Auditing
-
-_Open Semantic Core_. Click-through information is stored on chain. Every time a user follow a link positive voting transaction is broadcasted e.g. with grade 1\. Voting on a protocol level is a number in a range from -100 to 100\. Thus application developers has a tool to implement different grades for different kind of interactions. Such design is crucial to train the model and acquire a data about search popularity of semantic core and its volume. Currently search engines are very careful in revealing this information because this information is the most important part of ranking. We want to change that. Every time a user click on a snippet developer earn fair portion of emission and on chain model is trained. Application acquire the more rank the more rank acquired by its links. The more cyber•rank acquired - the more revenue streams for application developer.
-
-_Free Market of Answering
-
-_Self Hosted Search API_. Available for everybody $5 - 1000 запросов у Гугл. 30 requests a month for avarage users. The on should not store we entire index. It is possible to process (let us say without) some chain starting from a trusted part and cache only the most relevant and new documents thus limiting volume of stored information. This approach enable effective using of offline search
+_Self Hosted Search API_. Everybody can deploy self hosted API. In comparison with what Google offer ($5 per 1000 answers). Our solution can be much more cost effective for high performant applications. One node can process at least 10k queries per second in a read-only mode. That is about 1B requests per month. That is about 100 times cheaper ($0,05 per 1000 answers) even if payback period of search and evaluation appliance ($50k) will be one month. In reality affordable payback period is about 10 months. Thus self-hosted search in theory can be 1000x more cost effective than Google offering.
 
 ## Conclusion
 
