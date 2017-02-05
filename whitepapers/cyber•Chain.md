@@ -167,11 +167,11 @@ Natural rank is acquired in a process of auditing and curation. Based on this ra
 
 Synthetic rank is take as input natural rank expressed in `rshares`. This make possible to start calculate pagerank before payouts has been made. Conventional search engine work with nearly zero trust data. More than 200 factors used to calculate initial pagerank for a new document in the graph and find relevance to the search terms. Our novel approach allow to assign initial value based on sybil resistant voting. It is our belief that proposed approach can significantly simplify ranking and be more precise for information those nature is subjective. Though pagerank calculation is a trivial task we should estimate feasibility of doing so in a consensus computer such as Steem where scalability is limited with a less performant node and parallel processing [Steem Roadmap] or sharding is yet to be discovered [Ethereum Mauve].
 
-Recent study [http://www.vldb.org/pvldb/vol8/p1804-ching.pdf] shows that Facebook scale pagerank computation is doable (using Java based Giraph) for 1 trillion edges and 1.4B vertices in 600 minutes per iteration. Hence consensus computer made of commodity hardware will be able to process 1 iteration per 2 day for a 10B unique documents (SWAG for all blockchains + Git + Bittorent (https://arxiv.org/pdf/1009.3681.pdf) + IPFS). Our implementation is based on C++ thus can be more performant though is not guaranteed. Also we have opportunity to use the most performant CPUs and GPUs available operated by witnesses and not that is being used by cloud providers. Anyway our estimation prove that it is practically enough for proof-of-concept stage. Further research in the field of parallel consensus computing is necessary to achieve Google scale (10000x more documents) realtime decentralized computation of pagerank.
+Recent study [http://www.vldb.org/pvldb/vol8/p1804-ching.pdf] shows that Facebook scale pagerank computation is doable (using Java based Giraph) for 1 trillion edges and 1.4B vertices in 600 minutes per iteration. Hence consensus computer made of commodity hardware will be able to process 1 iteration per 2 day for a 10B unique documents (SWAG for all blockchains + Git + Bittorent (https://arxiv.org/pdf/1009.3681.pdf) + IPFS). Our implementation is based on C++ thus can be more performant though is not guaranteed. Also we have opportunity to use the most performant GPUs available operated by witnesses and not that is being used by cloud providers [http://www.hipc.org/hipc2011/studsym-papers/1569513051.pdf]. Anyway our estimation prove that it is practically enough to use CPU for proof-of-concept stage. GPU implementation can multiply computation capacity up to 1000x. But further research in the field of parallel consensus computing is necessary to achieve Google scale (10000x more documents) realtime decentralized computation of cyber•rank.
 
 Our model is recursive and require enormous amount of calculations which are limited within blockchain design. Model recalculation does not happens on a periodic basis rather it continuous. We consider to introduce consensus variable in addition to blocksize in order to target processing capacity of the network. Lets call it _computing target of documents per block_ or CTD. Any witness will be able to set a number of documents the network should recompute every block. The blockchain take as input computing target of legitimate witnesses and compute CTD as daily moving average. Based on CTD blockchain can schedule range of CIDs that should be recomputed by every witness per round.
 
-Both algorithms have strong proof in form of Google's $550 bln capitalization in 18 years and Steem $40 mln capitalization in 9 months. Combining both it is possible to empower the world with a new kind of search quality that has been (1) designed to index relevant document fast and (2) has inherent sybil protection.
+Both algorithms have strong proof in form of Google's $550 B capitalization in 18 years and Steem $40 M capitalization in 9 months. Combining both it is possible to empower the world with a new kind of search quality that has been (1) designed to index relevant document fast and (2) has inherent sybil protection.
 
 ## Self Indexing Dilemma
 
@@ -397,7 +397,7 @@ The following possibilities can be available in a distant future:
 - State channels
 - Permissionless smart contracts
 
-## Anonymity
+## Anonymity - not ready yet
 
 
 
@@ -409,13 +409,25 @@ The following possibilities can be available in a distant future:
 
 ## Search Appliance
 
-Fo bootsraping we are going to offer well tested open source specs for hardware configuration of commodity computer which cost around $10k and is able to participate and earn by itself.
+For bootstrapping a network we are going to offer software configuration (Cybernode - Github) on top of well tested open source specs for hardware configuration of commodity computer (Enterprise - Github) which cost around $10k-$30k depending on RAM and SSD capacity and is able to participate and earn by itself executing different network tasks:
+- operate as witness node
+- operate as indexer and auditor
+- operate as answering node
+- operate as fast and cheap backend for decentralized and distributed application
 
-Currently it is not hard to assemble a 2 CPU computer with 1 TB of RAM and 40 TB of SSD using commodity hardware. Such appliance can cost about $30k so we can think of it as affordable for those who are seriously want to be involved in a project. Also we have an option to extend capability of proposed search appliance based on 2 CPU motherboards built on Intel C612 chipset. Usually it has 7 PCI-E slots for GPU which can be dedicated for cyber•rank calculation [http://www.hipc.org/hipc2011/studsym-papers/1569513051.pdf]. Thus a price for an ultimate (2 CPU * Xeon E5 * 22 cores + 7 GPU * GTX 1080 * 2560 Cuda cores) search appliance can be around $50k.    
+We need a network of high performant computers in order to achieve our goals. Necessity comes from  the following assumptions:
+- all blockchain nodes and IPFS should live inside one machine to remove slow network communications from all middleware. Vast information for processing can be in memory.
+Communications inside one bus enable to execute required tasks significantly faster [[https://gist.github.com/jboner/2841832]]. Thus we can achieve nearly live indexing of reality from the very beginning.
+- extension with GPU. Currently data centers cannot compete with commodity GPU. E.g. Amazon offer very expensing professional Nvidia Tesla cards. For our purposes commodity cards such as GTX 1080 are much more cost effective.
 
-Software is open source. Cybernode ![](https://habrastorage.org/files/31c/e9c/05c/31ce9c05c71d44ddbda2e7abc3ac10d7.png) Hardware is open source. Enterprise.
+*Enterprise*. Currently it is not hard to assemble a 2 CPU computer with 1 TB of RAM and 40 TB of SSD using commodity hardware. Such appliance can cost about $30k so we can think of it as affordable for those who are seriously want to be involved in a project. Also we have an option to extend capability of proposed search appliance based on 2 CPU motherboards built on Intel C612 chipset. Usually it has 7 PCI-E slots for GPU which can be dedicated for cyber•rank calculation. Thus a price for an ultimate (2 CPU * Xeon E5 * 22 cores + 7 GPU * GTX 1080 * 2560 Cuda cores) search appliance can be around $50k. Currently such computer will able able to process, index, audit and linking all blockchains.
 
-...
+*Cybernode*.
+We implementing the following software configuration that is based on docker containers.
+
+![](https://habrastorage.org/files/31c/e9c/05c/31ce9c05c71d44ddbda2e7abc3ac10d7.png)
+
+cybernode allow everybody fast deployment of decentralized and distributed application powered with cyber•chain search capabilities.
 
 ## Performance and Scalability
 
@@ -431,7 +443,7 @@ Worth to note that the network don't require ultimate configuration at the start
 
 Possible scalability improvements include:
 - Hardware. This year Intel Optane [http://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html] That creates opportunity to converge RAM and SSD. Our design has 3 year hardware margin for moving to cheaper and more dense next generation memory.
-- Software. The future of consensus computer optimisations is in parallel processing. We are going to seriously invest in research of this field.
+- Software. The future of consensus computer optimisations is in parallel processing. We are going to seriously invest in research of this field. Solving this issue will enable the network to scale nearly infinitely.
 
 ## Deployment
 
