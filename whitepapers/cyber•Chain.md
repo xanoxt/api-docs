@@ -281,9 +281,9 @@ The only potential problem with proposed approach is safety of third party javas
 
 ## Dealing with Long Tail
 
-It is well known fact that every day Google receive up to 20% of new search queries never seen before. Thus we need to find a way to deal with it. To solve the issue we can split a problem for 3 independent parts:
+It is well known fact that every day Google receive up to 20% of new search queries never seen before. Thus we need to find a way to deal with it. Here are 3 popular use cases with simple solutions (surely non exhaustive) :
 - _Misspellings_. These queries contribute fair half to ever-growing unique query set. But it is not a rocket science to stem such queries client side without any indexed knowledge. After a user click on client side suggestion correct link can be submitted to cyber•chain thus improving global model.
-- _Phrases_. E.g. `forest gump imdb`. These queries can be combination of well known terms and contribute another half to ever-growing unique query set. Even if we get relevant links from indexed `forest`, `gump` and `imdb` separately we would not able to combine answer to return meaningful movie rating to a user. But we can find _the most close documents_ between `imdb`, `forest` and `gump` and sort them by relevance. Those likely be the most relevant answers. This simple method can significantly increase efficiency for long tail queries without rocket science.
+- _Phrases_. E.g. `forest gump imdb`. These queries can be combination of well known terms and contribute another half to ever-growing unique query set. Even if we get relevant links from indexed `forest`, `gump` and `imdb` separately we would not able to combine answer to return meaningful movie rating to a user. But we can find _the most close documents_ between `imdb`, `forest` and `gump` and sort them by relevance. Those likely be the most relevant answers. This simple method can significantly increase efficiency for long tail queries without rocket science. As API is open for everybody there is no limits on using advanced technics.
 - _Unique queries_. These is about 10% of never-seen-before queries. We expect that the market of linking will create a segment for on-demand answers. We remember that any query can be seen in memory pool by every network participant. Thus opportunity to earn can create healthy and competitive market for on-demand answer in environment without technical limitations.
 
 ## Spam Protection
@@ -292,30 +292,60 @@ In the center of spam protection system is an assumption that write operations c
 
 Auditing and curation is based on Steem reward mechanism. It is sybil resistant approach as votes are quadratic based on principle 1 token in system = 1 vote. In order to vote one should vest in shares for at least for 20 weeks. That solve a problem entirely because those who have a right to vote are strongly incentivized in a growth of his wealth. In order to prevent abuse of auditing and curation voting power decay implemented exactly as in Steem.
 
-## Possible Applications - not ready yet
+## Applications
 
 Its hard to imagine what kind of applications can be built on top of proposed foundation. I'd like to mentions some outstanding opportunities which can be build using cyber•Chain and IPFS.
 
 - Relevance everywhere
 - Blockchain browser
+_ Multi-protocol wallets
 - Offline search
 - Smart command tools
-- Self-aware robots
+- Autonomous robots
 - Language convergence
 
-_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search inside any application. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access. During search request global and local request can be done in parallel. This queries can be easily merged adjusted on user-defined importance of personalized search for her.
+_Relevance Everywhere_. Proposed approach enable social, geo, money or anything aware search inside any application. It is trivial to implement a search relevant to a particular identity using proposed algorithm. The more a user train a model the more behavioral data can be associated with she. This personalized information can be stored local for (1) faster retrieval and (2) offline access.
 
-_Blockchain Browser_.
+_Blockchain browser_. It easy to imagine emergence of a full blown blockchain browser. Currently there are several efforts for developing browsers around blockchains and distributed tech. Among them are Beaker, Mist and Brave .. All of them suffer from very limited functionality. Our developments can be useful for teams who are developing such tools.
 
-_Actions in search_.
+_Multi-protocol wallets_. Currently there are several efforts for developing easy to use universal wallet for blockchain assets. Jaxx and Exodus are among them. Developers of such applications suffer from diversity of protocols around blockchain tech. There is no fully functional multi-asset wallet yet. Our developments can help teams who are developing such tools.
 
-_Offline Search_.
-IPFS make possible
+_Actions in search_. Proposed design enable native support for blockchain asset related activity. It is possible to design applications which are (1) owned by creators, (2) appear right in search results and (3) allow transact-able call to actions with (4) provable attribution of conversion to search query. e-Commerce has never been so easy for everybody.
 
-_Smart Command Tools_.
+_Offline search_. IPFS make possible easy retrieval of documents from surroundings without internet connection. cyber•chain itself can be distributed using IPFS. That create possibility for ubiquitous offline search.
 
-_Self-aware robots_.
+_Smart Command Tools_. Command line tools can rely on relevant and structured answers from a search engine. That practically means that the following CLI tool is possible to implement
 
+```
+>  mylovelybot earn using hdd -100GB
+
+searching for opportunities:
+cyberd search <earn using hdd>
+
+The following answers received:
+- apt install siad /// 0.0001 btc per month per GB
+- apt install storjd /// 0.00008 btc per month per GB
+- apt install filecoind /// 0.00006 btc per month
+...
+
+Made a decision try `apt install siad`
+Git clone ...
+Building siad
+Starting siad
+Creating wallet using your standard seed
+You address is ....
+Placing bids ...
+Waiting for incoming storage requests ...
+
+```
+Search from CLI tools will inevitably create highly competitive market of dedicated semantic core for bots.
+
+_Autonomous robots_.
+Blockchain technology enable creation of devices which are able to earn, store, spend and invest digital assets by themselves.
+
+> If a robot can earn, store, spend and invest she can do everything you can do
+
+What is needed is simple yet powerful API about state of reality evaluated in transact-able assets. Our solution offer minimalistic but continuously self improving API that provides necessary tools for programming economically rational robots.
 
 _Language convergence_. Programmer should not care about what language do the user use. We don't need to have knowledge of what language user is searching in. Entire UTF-8 spectrum is at work. Semantic core is open so competition for answering can become distributed across different domain specific areas, including semantic cores of different languages. Unified approach creates opportunity for cyber•Bahasa. Since the Internet we observe a process of rapid language convergence. We use more truly global words across the entire planet independently of our nationality, language and race, Name the Internet. The dream of truly global language is hard to deploy because it is hard to agree on what mean what. But we have tools to make that dream come true. Its not hard to predict that the shorter a word the more it's cyber•rank will be. Global publicly available list of symbols, words and phrases sorted by cyber•rank with corresponding links provided by cyber•chain can be the foundation for emergence of truly global language everybody can accept. Recent scientific advances in machine translation [GNMT] are breathtaking but meaningless for those how wish to apply them without Google scale trained model. Proposed cyber•rank semantic core offer exactly this.
 
@@ -379,7 +409,7 @@ Crowdsale will start after 30 day of network launch and will goes 30 days. Crowd
 
 All participant will receive CP proportionally to invested bitcoins after discounts.
 
-## Extensibility
+## Extensibility and Governance
 
 Currently our implementation has the following functionality available for application developers.
 
@@ -389,25 +419,19 @@ Currently our implementation has the following functionality available for appli
 - Private Messaging. Enable private communications between accounts.
 - Dynamic Account Permissions. You can think about it as better multisig.
 
-Consensus can be changed in case of 17 of 21 delegates accept a hardfork.
-
 The following possibilities can be available in a distant future:
 
 - Sidechains
 - State channels
 - Permissionless smart contracts
 
+Consensus can be changed in case of 17 of 21 elected delegates accept a hardfork.
+
 ## Anonymity - not ready yet
 
-
-
 ...
 
-## Self Governance - not ready yet
-
-...
-
-## Search Appliance
+## Search and Evaluation Appliance
 
 For bootstrapping a network we are going to offer software configuration (Cybernode - Github) on top of well tested open source specs for hardware configuration of commodity computer (Enterprise - Github) which cost around $10k-$30k depending on RAM and SSD capacity and is able to participate and earn by itself executing different network tasks:
 - operate as witness node
@@ -420,30 +444,29 @@ We need a network of high performant computers in order to achieve our goals. Ne
 Communications inside one bus enable to execute required tasks significantly faster [[https://gist.github.com/jboner/2841832]]. Thus we can achieve nearly live indexing of reality from the very beginning.
 - extension with GPU. Currently data centers cannot compete with commodity GPU. E.g. Amazon offer very expensing professional Nvidia Tesla cards. For our purposes commodity cards such as GTX 1080 are much more cost effective.
 
-*Enterprise*. Currently it is not hard to assemble a 2 CPU computer with 1 TB of RAM and 40 TB of SSD using commodity hardware. Such appliance can cost about $30k so we can think of it as affordable for those who are seriously want to be involved in a project. Also we have an option to extend capability of proposed search appliance based on 2 CPU motherboards built on Intel C612 chipset. Usually it has 7 PCI-E slots for GPU which can be dedicated for cyber•rank calculation. Thus a price for an ultimate (2 CPU * Xeon E5 * 22 cores + 7 GPU * GTX 1080 * 2560 Cuda cores) search appliance can be around $50k. Currently such computer will able able to process, index, audit and linking all blockchains.
+*Enterprise*. Currently it is not hard to assemble a 2 CPU computer with 1 TB of RAM and 40 TB of SSD using commodity hardware. Such appliance can cost about $30k so we can think of it as affordable for those who are seriously want to be involved in a project. Also we have an option to extend capability of proposed search appliance based on 2 CPU motherboards built on Intel C612 chipset. Usually it has 7 PCI-E slots for GPU which can be dedicated for cyber•rank calculation. Thus a price for an ultimate (2 CPU * Xeon E5 * 22 cores + 7 GPU * GTX 1080 * 2560 Cuda cores) search and evaluation appliance can be around $50k. Currently such computer will able able to process, index, audit and linking all blockchains.
 
-*Cybernode*.
-We implementing the following software configuration that is based on docker containers.
+*Cybernode*. We implementing the following software configuration that is based on docker containers.
 
 ![](https://habrastorage.org/files/31c/e9c/05c/31ce9c05c71d44ddbda2e7abc3ac10d7.png)
 
-cybernode allow everybody fast deployment of decentralized and distributed application powered with cyber•chain search capabilities.
+Cybernode allow everybody fast deployment of decentralized and distributed application powered with cyber•chain search capabilities.
 
 ## Performance and Scalability
 
 Proposed blockchain design is based on DPOS consensus algorithm and has fast and predictable 3 seconds block conformation time and 1 minute finality time. Average conformation timeframe is 1,5 seconds thus conformations can be asynchronous and nearly invisible for users. A good thing is that users don't need conformations at all before getting search response as there is no risk associated with that.
 
-Current node implementation theoretically [https://bitshares.org/blog/2015/06/08/measuring-performance/] can process about 100k transactions per second. This theoretical bound is primary limited with possibility to replay a blockchain [https://steemit.com/blockchain/@dantheman/how-to-process-100m-transfers-second-on-a-single-blockchain]. As of now all blockchains are about 1B immutable documents which size is about 200 GB with avarage tx 200 kb. We need to store all hashes which are on average 64 bytes long. We estimated that storing in the index all blockchain documents as CIDs and votes is roughly the same as storing all raw blockchain data. Linking 1B documents create significant overhead as blockchain index size can be up to 100 times more. Given this we can assume that indexing all existing blockchains require about 4TB of SSD space. This is affordable for commodity hardware with 10x scaling capability without necessity for sharding across several machines. We assume this is enough scalability margin for proof-of-concept.
+Current node implementation theoretically [https://bitshares.org/blog/2015/06/08/measuring-performance/] can process about 100k transactions per second. This theoretical bound is primary limited with possibility to replay a blockchain [https://steemit.com/blockchain/@dantheman/how-to-process-100m-transfers-second-on-a-single-blockchain]. As of now all blockchains are about 1B immutable documents which size is about 200 GB with average tx 200 kb. We need to store all hashes which are on average 64 bytes long. We estimated that storing in the index all blockchain documents as CIDs and votes is roughly the same as storing all raw blockchain data. Linking 1B documents create significant overhead as blockchain index size can be up to 100 times more. Given this we can assume that indexing all existing blockchains require about 4TB of SSD space. This is affordable for commodity hardware with 10x scaling capability without necessity for sharding across several machines. We assume this is enough scalability margin for proof-of-concept.
 
 Initial indexing of 1B documents and 100B links will require continuous load of the network at the upper bound of its capacity in the first year of its existence. If we assume that network will be able to process 10k transactions per second with 2MB blocksize we will be able to index all blockchains in 4 months. Further operations will require significantly less capacity as currently not more than 1000 transactions per second happens among all blockchains.
 
-Based on the proposed search appliance we estimate that participants will require to invest around $1 mln. for dedicated hardware (21 witnesses) and the same amount for backup nodes. Thus overall costs of hardware network infrastructure can be around $2 mln. after full deployment.
+Based on the proposed search appliance we estimate that participants will require to invest around $1M for dedicated hardware (21 witnesses) and the same amount for backup nodes. Thus overall costs of hardware network infrastructure can be around $2M. after full deployment.
 
 Worth to note that the network don't require ultimate configuration at the start and is able to optimize initial investments by the costs of time to index all blockchains. Thus costs at launch can be around $200k. Given that mining industry has been rapidly developed last years this can not be a showstopper for a project. We expect huge interest from miners as slots are limited with 21 fully paid nodes and ~20 of partially paid nodes (depend on the market).
 
 Possible scalability improvements include:
 - Hardware. This year Intel Optane [http://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html] That creates opportunity to converge RAM and SSD. Our design has 3 year hardware margin for moving to cheaper and more dense next generation memory.
-- Software. The future of consensus computer optimisations is in parallel processing. We are going to seriously invest in research of this field. Solving this issue will enable the network to scale nearly infinitely.
+- Software. The future of consensus computer optimization is in parallel processing. We are going to seriously invest in research of this field. Solving this issue will enable the network to scale nearly infinitely.
 
 ## Deployment
 
@@ -498,8 +521,6 @@ Key purpose of our proposed design is not just replicate abilities of existing s
 Our proposed design has all necessary components to bootstrap a markets for a new generation of answer applications.
 
 Proposed economics model disintermediate conventional ad model there users are sold to advertiser and enable any business or people or robot benefit from pure peer-to-peer interactions which bring value for every involved participant.
-
-Worth to note that minimalistic but continuously self improving approach provides necessary tools for emergence of economically rational robots. Blockchain technology enable creation of devices which are able to earn, store, spend and invest digital assets by themselves. What is needed is verified information about state of reality evaluated in transact-able assets. ...
 
 _Free Market of Indexing_
 
